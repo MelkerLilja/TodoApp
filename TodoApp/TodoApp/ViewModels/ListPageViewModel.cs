@@ -9,7 +9,6 @@ namespace TodoApp.ViewModels
 
         public ListPageViewModel()
         {
-            
             var toolbarItem = new ToolbarItem();
             
             toolbarItem.Clicked += async (sender, e) =>

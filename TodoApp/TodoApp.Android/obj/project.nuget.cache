@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KN5gmUmP/JMAmjpunCZJcnjoTxslUG1ALFRyKRySUE4DDGArbF2q3Lwnt+Jt8SkN4fwWDpoJwkiUkL9HWcCpGA==",
+  "dgSpecHash": "fW2RvyYZLiggNogdDvE9+IzrnCMYrbbqPj0h2tKbgLen48yeeIhMeiY/4ofONSqb3qy++luzIz9vxc+FkjBZFg==",
   "success": true,
   "projectFilePath": "/Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.Android/TodoApp.Android.csproj",
   "expectedPackageFiles": [
@@ -51,6 +51,7 @@
     "/Users/melkerlilja/.nuget/packages/xamarin.android.support.vector.drawable/28.0.0.3/xamarin.android.support.vector.drawable.28.0.0.3.nupkg.sha512",
     "/Users/melkerlilja/.nuget/packages/xamarin.android.support.versionedparcelable/28.0.0.3/xamarin.android.support.versionedparcelable.28.0.0.3.nupkg.sha512",
     "/Users/melkerlilja/.nuget/packages/xamarin.android.support.viewpager/28.0.0.3/xamarin.android.support.viewpager.28.0.0.3.nupkg.sha512",
+    "/Users/melkerlilja/.nuget/packages/xamarin.essentials/1.5.3.2/xamarin.essentials.1.5.3.2.nupkg.sha512",
     "/Users/melkerlilja/.nuget/packages/xamarin.forms/4.4.0.991640/xamarin.forms.4.4.0.991640.nupkg.sha512"
   ],
   "logs": []

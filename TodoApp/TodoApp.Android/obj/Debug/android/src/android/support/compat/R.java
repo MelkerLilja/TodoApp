@@ -110,13 +110,13 @@ public final class R {
 		public static final int status_bar_notification_info_overflow = 0x7f0c004d;
 	}
 	public static final class style {
-		public static final int TextAppearance_Compat_Notification = 0x7f0d0118;
-		public static final int TextAppearance_Compat_Notification_Info = 0x7f0d0119;
-		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0d011b;
-		public static final int TextAppearance_Compat_Notification_Time = 0x7f0d011e;
-		public static final int TextAppearance_Compat_Notification_Title = 0x7f0d0120;
-		public static final int Widget_Compat_NotificationActionContainer = 0x7f0d01d0;
-		public static final int Widget_Compat_NotificationActionText = 0x7f0d01d1;
+		public static final int TextAppearance_Compat_Notification = 0x7f0d0119;
+		public static final int TextAppearance_Compat_Notification_Info = 0x7f0d011a;
+		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0d011c;
+		public static final int TextAppearance_Compat_Notification_Time = 0x7f0d011f;
+		public static final int TextAppearance_Compat_Notification_Title = 0x7f0d0121;
+		public static final int Widget_Compat_NotificationActionContainer = 0x7f0d01d1;
+		public static final int Widget_Compat_NotificationActionText = 0x7f0d01d2;
 	}
 	public static final class styleable {
 		public static final int[] ColorStateListItem = new int[] { 0x010101a5, 0x0101031f, 0x7f030027 };

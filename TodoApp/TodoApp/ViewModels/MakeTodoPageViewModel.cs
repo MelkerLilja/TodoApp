@@ -1,3 +1,5 @@
+using System;
+using System.Windows.Input;
 using TodoApp.Models;
 using Xamarin.Forms;
 
@@ -5,11 +7,15 @@ namespace TodoApp.ViewModels
 {
     public class MakeTodoPageViewModel : ContentPage
     {
-
+        public ICommand CancelCommand {get; set;}
         public MakeTodoPageViewModel()
         {
-            Title = "Todo Item";
+            CancelCommand = new Command ((arg)=>
+            {
 
+                Application.Current.MainPage.DisplayAlert("asd","asd","OK");
+
+            });
             var nameEntry = new Entry();
             nameEntry.SetBinding(Entry.TextProperty, "Name");
 
@@ -43,6 +49,7 @@ namespace TodoApp.ViewModels
 
             Content = new StackLayout
             {
+                
                 Margin = new Thickness(20),
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 Children =
@@ -60,4 +67,5 @@ namespace TodoApp.ViewModels
             };
         }
     }
+    
 }

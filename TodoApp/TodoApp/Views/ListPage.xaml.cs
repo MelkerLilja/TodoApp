@@ -22,7 +22,7 @@ namespace TodoApp.Views
 
         async void OnItemAdded(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MakeTodoPageViewModel
+            await Navigation.PushAsync(new MakeTodoPage
             {
                 BindingContext = new TodoItem()
             });
@@ -32,7 +32,7 @@ namespace TodoApp.Views
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new MakeTodoPageViewModel
+                await Navigation.PushAsync(new MakeTodoPage
                 {
                     BindingContext = e.SelectedItem as TodoItem
                 });

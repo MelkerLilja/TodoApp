@@ -65,3 +65,5 @@
 /Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.iOS/bin/iPhoneSimulator/Debug/TodoApp.iOS.exe.config
 /Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.iOS/obj/iPhoneSimulator/Debug/TodoApp.iOS.exe.config
 /Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.5/optimized/check.png
+/Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.iOS/bin/iPhoneSimulator/Debug/Xamarin.Essentials.dll
+/Users/melkerlilja/RiderProjects/TodoApp/TodoApp/TodoApp.iOS/bin/iPhoneSimulator/Debug/Xamarin.Essentials.pdb
