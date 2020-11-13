@@ -10,9 +10,11 @@ namespace TodoApp.Views
         public ListPage()
         {
             InitializeComponent();
+            BindingContext = new ListPageViewModel();
+            
         }
-        
 
+/*
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -38,5 +40,7 @@ namespace TodoApp.Views
                 });
             }
         }
+    }
+    */
     }
 }

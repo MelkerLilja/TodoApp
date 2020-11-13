@@ -34,14 +34,15 @@ namespace TodoApp.Data
             }
         }
 
-        public Task<List<TodoItem>> GetItemsAsync()
+        public async Task<IEnumerable<TodoItem>> GetItemsAsync()
         {
-            return Database.Table<TodoItem>().ToListAsync();
+
+            return await Database.Table<TodoItem>().ToListAsync();
         }
 
-        public Task<List<TodoItem>> GetItemsNotDoneAsync()
+        public async Task<IEnumerable<TodoItem>> GetItemsNotDoneAsync()
         {
-            return Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
+            return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
         }
 
         public Task<TodoItem> GetItemAsync(int id)

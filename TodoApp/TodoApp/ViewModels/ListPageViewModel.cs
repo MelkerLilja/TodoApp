@@ -1,74 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using TodoApp.Models;
+using TodoApp.Views;
 using Xamarin.Forms;
 
 namespace TodoApp.ViewModels
 {
-    public class ListPageViewModel : ContentPage
+    public class ListPageViewModel : BaseViewModel
     {
-        ListView listView;
+        public ICommand ButtonAction { private set; get; }
+        public ObservableCollection<TodoItem> Items { get; set; }
+
+        public ICommand LoadItemsCommand { get; }
+
+        private TodoItem selectedItem;
+        public TodoItem SelectedItem { 
+            get
+            {
+                return selectedItem; 
+            }
+            set
+            {
+                selectedItem = value;
+
+                if (selectedItem == null)
+                    return;
+
+                OnListItemSelected(selectedItem);
+
+                SelectedItem = null;
+            }}
 
         public ListPageViewModel()
         {
-            var toolbarItem = new ToolbarItem();
+            Items = new ObservableCollection<TodoItem>();
+            LoadItemsCommand = new Command(async () => await FetchItems());
+            Task.Run(async () => { await FetchItems(); });
             
-            toolbarItem.Clicked += async (sender, e) =>
+            ButtonAction = new Command(execute: async () =>
             {
-                await Navigation.PushAsync(new MakeTodoPageViewModel
-                {
-                    BindingContext = new TodoItem()
-                });
-            };
-            ToolbarItems.Add(toolbarItem);
-
-            listView = new ListView
-            {
-                Margin = new Thickness(20),
-                ItemTemplate = new DataTemplate(() =>
-                {
-                    var label = new Label
-                    {
-                        VerticalTextAlignment = TextAlignment.Center,
-                        HorizontalOptions = LayoutOptions.StartAndExpand
-                    };
-                    label.SetBinding(Label.TextProperty, "Name");
-
-                    var tick = new Image
-                    {
-                        Source = ImageSource.FromFile("check.png"),
-                        HorizontalOptions = LayoutOptions.End
-                    };
-                    tick.SetBinding(VisualElement.IsVisibleProperty, "Done");
-
-                    var stackLayout = new StackLayout
-                    {
-                        Margin = new Thickness(20, 0, 0, 0),
-                        Orientation = StackOrientation.Horizontal,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Children = { label, tick }
-                    };
-
-                    return new ViewCell { View = stackLayout };
-                })
-            };
-            listView.ItemSelected += async (sender, e) =>
-            {
-
-                if (e.SelectedItem != null)
-                {
-                    await Navigation.PushAsync(new MakeTodoPageViewModel
-                    {
-                        BindingContext = e.SelectedItem as TodoItem
-                    });
-                }
-            };
-
-            Content = listView;
+                await Application.Current.MainPage.Navigation.PushAsync(new MakeTodoPage());
+            });
         }
-
-        protected override async void OnAppearing()
+        
+        async void OnListItemSelected(TodoItem e)
         {
-            base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetItemsAsync();
+            if (e != null)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new MakeTodoPage(e));
+            }
         }
+
+        private async Task FetchItems()
+        {
+            IsBusy = true;
+            Items.Clear();
+            foreach (var item in await App.Database.GetItemsAsync())
+            {
+                Items.Add(item);
+            }
+
+            IsBusy = false;
+        }
+
     }
-}
+    }

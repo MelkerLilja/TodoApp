@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TodoApp.ViewModels;assembly=TodoApp"
+             xmlns:models="clr-namespace:TodoApp.Models;assembly=TodoApp"
              x:Class="TodoApp.Views.ListPage"
+             x:DataType="viewModels:ListPageViewModel"
              Title="Todo">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="plus.png" Clicked="OnItemAdded" />
+        <ToolbarItem IconImageSource="plus.png" Command="{Binding ButtonAction}" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" ItemSelected="OnListItemSelected" >
-        <ListView.Margin>
-            <OnPlatform x:TypeArguments="Thickness">
-                <On Platform="iOS" Value="0,0,20,0" />
-                <On Platform="Android" Value="20" />
-            </OnPlatform>
-        </ListView.Margin>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="Body" />
-                        <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Path=Done}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <RefreshView Command="{Binding LoadItemsCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+            <ListView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,0,20,0" />
+                    <On Platform="Android" Value="20" />
+                </OnPlatform>
+            </ListView.Margin>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:TodoItem">
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="Body" />
+                            <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Path=Done}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </RefreshView>
 </ContentPage>
